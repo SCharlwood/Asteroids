@@ -50,7 +50,10 @@ def main():
 		for a in asteroids:
 			# Does it collide with the Player?
 			if P1.Does_Collide(a):
-				sys.exit("Game Over!")
+				P1.Health -=1
+				a.kill()
+				if P1.Health <=0:
+					sys.exit("Game Over!")
 				
 			# Does asteroid collide with a shot?
 			for s in shots:
