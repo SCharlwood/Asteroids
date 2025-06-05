@@ -10,6 +10,7 @@ class Player(CircleShape):
 		super().__init__(x, y, PLAYER_RADIUS)
 		self.rotation = 0
 		self.ShotTimer = 0
+		self.Score = 0
 	
 	def triangle(self):
 		forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -19,6 +20,10 @@ class Player(CircleShape):
 		c = self.position - forward * self.radius + right
 		return [a, b, c]
 	
+	
+	def WriteScore(self, screen,font):
+		img = font.render(f"Score: {self.Score}", True, c_white, c_black)
+		screen.blit(img, (20, 20))	
 	
 	def draw(self, screen):
 		pygame.draw.polygon(screen, "white", self.triangle(), 2)

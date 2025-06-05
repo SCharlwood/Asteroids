@@ -15,7 +15,8 @@ def main():
 	
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 	clock = pygame.time.Clock()
-	dt = 0 
+	dt = 0
+	font = pygame.font.SysFont(None, 24)
 	
 	# Set groups
 	updatable = pygame.sprite.Group()
@@ -56,11 +57,15 @@ def main():
 				if a.Does_Collide(s):
 					a.split()
 					s.kill()
+					P1.Score +=1
 						
 				
 		
 		for d in drawable:
 			d.draw(screen)
+		
+		P1.WriteScore(screen,font)
+		
 		
 		dt = clock.tick(60)/1000
 		pygame.display.flip()
