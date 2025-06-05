@@ -18,3 +18,5 @@ PLAYER_SHOOT_COOLDOWN = 0.3
 
 c_white = (255,255,255)
 c_black = (0,0,0,)
+
+Explode_Time = 20

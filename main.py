@@ -21,14 +21,15 @@ def main():
 	# Set groups
 	updatable = pygame.sprite.Group()
 	drawable  = pygame.sprite.Group()
-	asteroids  = pygame.sprite.Group()
-	shots       = pygame.sprite.Group()
+	asteroids   = pygame.sprite.Group()
+	shots         = pygame.sprite.Group()
+	Explosions  = pygame.sprite.Group()
 	
 	#Setout Containers on Class objects
 	Player.containers          = (updatable,drawable)
 	Asteroid.containers       = (asteroids, updatable,drawable)
 	AsteroidField.containers = (updatable)
-	
+	Explosion.containers      = (updatable,drawable)
 	Shot.containers            = (shots, updatable,drawable)
 	
 	# Initialise Player character
@@ -58,7 +59,7 @@ def main():
 			# Does asteroid collide with a shot?
 			for s in shots:
 				if a.Does_Collide(s):
-					a.split()
+					a.split(screen)
 					s.kill()
 					P1.Score +=1
 						
