@@ -65,5 +65,34 @@ class Explosion(CircleShape):
 			Star_Points.append(self.position + pygame.Vector2(0, 1).rotate(i*self.Ang+0.5*self.Ang)*radius*0.75)
 
 		return Star_Points
+
+
+class HealthPack(CircleShape):
+	def __init__(self, x, y, radius):
+		super().__init__(x, y, radius)
+
 		
+		
+	def draw(self, screen):
+		pygame.draw.polygon(screen, "green", self.ExplodePoly(self.radius), 2)
+		
+	def update(self, dt):
+		# Update Draw radius
+
+		self.DrawRadius = (1-math.cos(self.time*2*3.1412/Explode_Time)) * 0.5 *  self.radius
+		
+		if self.time <= 0:
+			self.kill()
+		else:
+			self.time -= 1
+		
+		
+	def ExplodePoly(self,radius):
+		Star_Points = []
+		
+		for i in range(self.N_Points):
+			Star_Points.append(self.position + pygame.Vector2(0, 1).rotate(i*self.Ang)*radius*1.25)
+			Star_Points.append(self.position + pygame.Vector2(0, 1).rotate(i*self.Ang+0.5*self.Ang)*radius*0.75)
+
+		return Star_Points
 	
