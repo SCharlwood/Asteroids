@@ -2,6 +2,8 @@ import pygame
 from constants import *
 from circleshape import *
 from player import *
+from asteroid import *
+from asteroidfield import *
 
 # Internal Timing
 
@@ -13,12 +15,19 @@ def main():
 	clock = pygame.time.Clock()
 	dt = 0 
 	
+	# Set groups
 	updatable = pygame.sprite.Group()
 	drawable  = pygame.sprite.Group()
-	Player.containers = (updatable,drawable)
+	asteroids  = pygame.sprite.Group()
+	
+	#Setout Containers
+	Player.containers          = (updatable,drawable)
+	Asteroid.containers       = (asteroids, updatable,drawable)
+	AsteroidField.containers = (updatable)
 	
 	# Initialise Player character
 	P1 = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2,PLAYER_RADIUS)
+	AF = AsteroidField()
 	
 	# Game loop 
 	check = 0
