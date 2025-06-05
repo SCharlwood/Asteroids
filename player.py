@@ -12,6 +12,7 @@ class Player(CircleShape):
 		self.ShotTimer = 0
 		self.Score = 0
 		self.Health =3
+		self.ammo = MAX_AMMO
 
 	
 	def triangle(self):
@@ -25,7 +26,9 @@ class Player(CircleShape):
 	
 	def WriteScore(self, screen,font):
 		img = font.render(f"Score: {self.Score}", True, c_white, c_black)
-		screen.blit(img, (20, 20))	
+		screen.blit(img, (20, 10))
+		img = font.render(f"Ammo: {self.ammo}", True, c_white, c_black)
+		screen.blit(img, (20, 30))	
 	
 	def draw(self, screen):
 		if self.Health ==3:
@@ -66,7 +69,8 @@ class Player(CircleShape):
 		self.position += forward * PLAYER_SPEED * dt
 		
 	def shoot(self):
-		if self.ShotTimer <= 0:
+		if self.ShotTimer <= 0 and self.ammo>0:
 			s = Shot(self.position[0], self.position[1], SHOT_RADIUS)
 			s.velocity =  pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+			self.ammo -=1
 			self.ShotTimer = PLAYER_SHOOT_COOLDOWN

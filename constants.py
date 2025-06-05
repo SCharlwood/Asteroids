@@ -7,9 +7,11 @@ ASTEROID_SPAWN_RATE = 0.8  # seconds
 ASTEROID_MAX_RADIUS = ASTEROID_MIN_RADIUS * ASTEROID_KINDS
 
 PLAYER_RADIUS = 20
- 
+PLAYER_MAX_HEALTH = 3 # if you change, you need to change the health bar colour scheme.
 PLAYER_TURN_SPEED = 300
 PLAYER_SPEED = 200
+
+MAX_AMMO = 1000
 
 SHOT_RADIUS = 5
 PLAYER_SHOOT_SPEED = 500
@@ -20,3 +22,6 @@ c_white = (255,255,255)
 c_black = (0,0,0,)
 
 Explode_Time = 20
+
+HEALTH_PACK_SIZE = 10
+HP_SPAWN_PROB = 10
